@@ -98,7 +98,7 @@ namespace Millionaire
             using SQLiteConnection myconnection = new SQLiteConnection("Data Source=../../../leaderboardDB.db");
             myconnection.Open();
             
-            if (level >= fireproofLevel)
+            if (level >= fireproofLevel || level != 0)
             {
                 SQLiteCommand mycommand = new SQLiteCommand("INSERT INTO leaderboard(player_name, score) VALUES (@playerName, @score)", myconnection);
                 mycommand.Parameters.AddWithValue("@playerName", playerName);
@@ -263,7 +263,7 @@ namespace Millionaire
                 return;
             }
 
-            leaderboard = leaderboard.OrderByDescending(e => e.score).Take(10).ToList();
+            leaderboard = leaderboard.OrderByDescending(e => int.Parse(e.score)).Take(10).ToList();
             var leaderboardStr = new StringBuilder("Доска лидеров: \n\n");
             foreach (var results in leaderboard)
             {

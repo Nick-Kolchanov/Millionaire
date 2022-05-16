@@ -12,8 +12,8 @@ namespace Millionaire
 {
     public partial class Registration : Form
     {
-        public string PlayerName { get; set; }
-        public int FireproofIndex { get; set; }
+        public string PlayerName { get; set; } = "Unknown";
+        public int FireproofIndex { get; set; } = 15;
 
         public Registration()
         {
