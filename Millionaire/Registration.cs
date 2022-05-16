@@ -29,7 +29,7 @@ namespace Millionaire
             }
             if (!NameTextBox.Text.All(char.IsLetterOrDigit))
             {
-                MessageBox.Show("В имени игрока может состоять только из букв и цифр");
+                MessageBox.Show("Имя игрока может состоять только из букв и цифр");
                 return;
             }
             PlayerName = NameTextBox.Text;

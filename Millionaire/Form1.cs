@@ -265,9 +265,11 @@ namespace Millionaire
 
             leaderboard = leaderboard.OrderByDescending(e => int.Parse(e.score)).Take(10).ToList();
             var leaderboardStr = new StringBuilder("Доска лидеров: \n\n");
+            int cnt = 1;
             foreach (var results in leaderboard)
             {
-                leaderboardStr.Append(results.name).Append(" - ").Append(results.score).Append('\n');
+                leaderboardStr.Append(cnt).Append(") ").Append(results.name).Append(" - ").Append(results.score).Append('\n');
+                cnt++;
             }
 
             MessageBox.Show(leaderboardStr.ToString());
@@ -282,7 +284,7 @@ namespace Millionaire
             fireproofLevel = regForm.FireproofIndex;
 
             fireproofLevelLabel.Text = winnings[fireproofLevel];
-
+            level = 0;
             StartGame();
         }
     }
