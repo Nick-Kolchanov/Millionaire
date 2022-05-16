@@ -98,7 +98,7 @@ namespace Millionaire
             using SQLiteConnection myconnection = new SQLiteConnection("Data Source=../../../leaderboardDB.db");
             myconnection.Open();
             
-            if (level >= fireproofLevel || level != 0)
+            if (level >= fireproofLevel && level != 0)
             {
                 SQLiteCommand mycommand = new SQLiteCommand("INSERT INTO leaderboard(player_name, score) VALUES (@playerName, @score)", myconnection);
                 mycommand.Parameters.AddWithValue("@playerName", playerName);
