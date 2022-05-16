@@ -43,6 +43,7 @@ namespace Millionaire
 
         private async void ReadQuestionsFromDB()
         {
+            // Query to DBHub.io API
             var responseString = await "https://api.dbhub.io/v1/query"
                 .PostUrlEncodedAsync(new {
                     apikey = "29AGoJB7pTmxXtcr8N0GByFd8a1",
@@ -58,13 +59,10 @@ namespace Millionaire
             foreach (var results in tableContent)
             {
                 string[] questionArr = new string[7];
-                questionArr[0] = results[0].Value;
-                questionArr[1] = results[1].Value;
-                questionArr[2] = results[2].Value;
-                questionArr[3] = results[3].Value;
-                questionArr[4] = results[4].Value;
-                questionArr[5] = results[5].Value;
-                questionArr[6] = results[6].Value;
+                for (int i = 0; i < 7; i++)
+                {
+                    questionArr[i] = results[i].Value;
+                }
                 questions.Add(new Question(questionArr));
             }
 
